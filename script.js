@@ -14,15 +14,15 @@ if (menuToggle && nav) {
     Object.assign(nav.style, {
       display: 'flex',
       position: 'absolute',
-      top: '74px',
+      top: '60px',
       left: '14px',
       right: '14px',
-      padding: '18px',
+      padding: '16px',
       background: '#fff',
       border: '1px solid #dbe7eb',
-      borderRadius: '16px',
+      borderRadius: '14px',
       flexDirection: 'column',
-      boxShadow: '0 16px 40px rgba(6,45,70,.12)'
+      boxShadow: '0 14px 34px rgba(6,45,70,.12)'
     });
   });
 }
@@ -31,7 +31,7 @@ window.addEventListener('load', () => {
   document.querySelector('.hero')?.classList.add('is-loaded');
 });
 
-const observeOnce = (selector, className = 'is-visible', threshold = 0.2) => {
+const observeOnce = (selector, className = 'is-visible', threshold = 0.22) => {
   document.querySelectorAll(selector).forEach((el) => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -45,52 +45,43 @@ const observeOnce = (selector, className = 'is-visible', threshold = 0.2) => {
   });
 };
 
-observeOnce('.problem');
-observeOnce('.stagger-group');
-observeOnce('.reveal-image');
-observeOnce('.equation', 'is-active', 0.45);
+observeOnce('.problem', 'is-visible', 0.2);
+observeOnce('.equation', 'is-active', 0.55);
 
-const growthDemo = document.querySelector('.growth-demo');
+const growthStrip = document.querySelector('.growth-strip');
 
-if (growthDemo) {
-  const growthObserver = new IntersectionObserver((entries) => {
+if (growthStrip) {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
 
-      growthDemo.classList.add('is-active');
+      growthStrip.classList.add('is-active');
 
-      const start = Number(growthDemo.dataset.start || 1000000);
-      const rate = Number(growthDemo.dataset.rate || 0.055);
-      const years = Number(growthDemo.dataset.years || 5);
-      const valueEl = growthDemo.querySelector('.growth-value');
-      const yearEl = growthDemo.querySelector('.growth-year');
+      const start = Number(growthStrip.dataset.start || 1000000);
+      const rate = Number(growthStrip.dataset.rate || 0.055);
+      const years = Number(growthStrip.dataset.years || 5);
+      const finish = start * Math.pow(1 + rate, years);
+      const valueEl = growthStrip.querySelector('.growth-value');
 
-      const values = Array.from({ length: years + 1 }, (_, year) =>
-        Math.round(start * Math.pow(1 + rate, year))
-      );
+      const duration = 1900;
+      const startTime = performance.now();
 
-      const labels = ['Today', 'Y1', 'Y2', 'Y3', 'Y4', 'Y5'];
-      let step = 0;
+      const animateValue = (now) => {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = start + (finish - start) * eased;
 
-      const renderStep = () => {
-        const value = values[step];
         if (valueEl) {
-          valueEl.textContent = value >= 1000000
-            ? '$' + (value / 1000000).toFixed(step === 0 ? 2 : 3).replace(/0+$/, '').replace(/\.$/, '') + 'm'
-            : '$' + Math.round(value / 1000) + 'k';
+          valueEl.textContent = '$' + (value / 1000000).toFixed(2) + 'm';
         }
-        if (yearEl) yearEl.textContent = labels[step] || ('Y' + step);
 
-        if (step < years) {
-          step += 1;
-          window.setTimeout(renderStep, 380);
-        }
+        if (progress < 1) requestAnimationFrame(animateValue);
       };
 
-      window.setTimeout(renderStep, 250);
-      growthObserver.unobserve(growthDemo);
+      requestAnimationFrame(animateValue);
+      observer.unobserve(growthStrip);
     });
-  }, { threshold: 0.35 });
+  }, { threshold: 0.45 });
 
-  growthObserver.observe(growthDemo);
+  observer.observe(growthStrip);
 }
