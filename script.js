@@ -75,8 +75,12 @@ if(problem&&keepCard&&borrowCard&&solutionHeading&&solutionCard){
       setTimeout(()=>{
         clear();
         solutionHeading.classList.add('is-active');
-        solutionCard.classList.add('is-active');
       },1800);
+
+      setTimeout(()=>{
+        solutionHeading.classList.add('is-active');
+        solutionCard.classList.add('is-active');
+      },2350);
 
       observer.unobserve(entry.target);
     });
@@ -156,7 +160,7 @@ if(maths&&equation&&growth){
 
         const growthValue=growth.querySelector('.growth-value');
         const start=1000000;
-        const finish=start*Math.pow(1.055,5);
+        const finish=start*Math.pow(1.06,5);
 
         growthValue.textContent='$1.00m';
         growth.classList.add('is-animated');
@@ -169,16 +173,6 @@ if(maths&&equation&&growth){
           v=>'$'+(v/1000000).toFixed(2)+'m'
         );
       },2250);
-
-      setTimeout(()=>{
-        const benefits=[...document.querySelectorAll('.reassurance-box')];
-
-        benefits.forEach((card,index)=>{
-          setTimeout(()=>card.classList.add('pulse'),index*180);
-        });
-
-        setTimeout(()=>benefits.forEach(card=>card.classList.remove('pulse')),1100);
-      },3500);
 
       observer.unobserve(entry.target);
     });
