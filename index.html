@@ -33,59 +33,66 @@
     </div>
   </section>
 
-  <section class="section problem-section" id="problem">
+  <section class="problem-section" id="problem">
     <div class="shell">
       <p class="section-kicker">The real problem</p>
       <h2 class="problem-line">You save. The market moves. You save again. The market moves again.</h2>
+      <p class="problem-support">The home doesn’t stand still while you save and while you wait your dream home just keeps getting more expensive.</p>
 
-      <div class="cost-waiting">
-        <div class="cost-copy">
-          <p class="section-kicker">The cost of waiting</p>
-          <h2>The home doesn’t stand still while you save.</h2>
-          <p class="cost-tagline">Your dream home just keeps getting more expensive.</p>
-        </div>
+      <div class="cost-block">
+        <p class="section-kicker">The cost of waiting</p>
 
-        <div class="cost-visual" aria-label="Illustrative growth of a one million dollar home to 1.34 million dollars over five years">
-          <div class="waiting-start">
-            <span>Today</span>
+        <div class="waiting-journey" aria-label="Illustrative growth of a one million dollar home to 1.34 million dollars over five years">
+          <div class="journey-value journey-start">
+            <span>Today’s home</span>
             <strong>$1.00m</strong>
           </div>
 
-          <div class="waiting-house-wrap">
-            <div class="waiting-house" aria-hidden="true">
+          <div class="journey-track" aria-hidden="true">
+            <svg class="journey-path" viewBox="0 0 700 150" preserveAspectRatio="none">
+              <path class="journey-path-base" d="M20 120 C165 118 250 103 355 86 C472 67 565 42 680 20"></path>
+              <path class="journey-path-progress" d="M20 120 C165 118 250 103 355 86 C472 67 565 42 680 20"></path>
+            </svg>
+
+            <div class="moving-house">
               <span class="roof"></span>
               <span class="house-body"></span>
               <span class="house-door"></span>
             </div>
-            <div class="waiting-rise" aria-hidden="true">↗</div>
           </div>
 
-          <div class="waiting-end">
+          <div class="journey-value journey-end">
             <span>In 5 years</span>
             <strong class="growth-value">$1.34m</strong>
           </div>
 
-          <p class="cost-number"><strong>+$338,000 for the same home</strong></p>
-          <p class="growth-rate">Illustrative 6% p.a. growth.</p>
+          <div class="journey-result">
+            <strong>+$338,000 for the same home</strong>
+            <span>Illustrative 6% p.a. growth.</span>
+          </div>
         </div>
       </div>
 
       <div class="options-block">
         <p class="section-kicker">What can you do?</p>
+
         <div class="choice-grid-three">
           <article class="choice-card choice-one">
+            <span class="choice-index">01</span>
             <h3>Keep saving</h3>
             <strong>More sacrifice. More waiting.</strong>
             <p>You cut back. You save harder. And the home you want keeps getting further away.</p>
           </article>
 
           <article class="choice-card choice-two">
+            <span class="choice-index">02</span>
             <h3>Borrow more</h3>
             <strong>More debt. More pressure.</strong>
             <p>Stretch the mortgage further and every month gets tighter.</p>
           </article>
 
           <article class="choice-card choice-three">
+            <span class="choice-index">03</span>
             <h3>Ask family for help</h3>
             <strong>Not everyone has that option.</strong>
             <p>Family support can help, but for many buyers it simply isn’t available or isn’t enough.</p>
@@ -95,28 +102,23 @@
     </div>
   </section>
 
-  <section class="solution-section">
-    <div class="shell solution-inner">
-      <p class="section-kicker">The solution</p>
-      <h2>BuySooner helps break the cycle.</h2>
-      <h3>More buying power now, so you can buy the home you want sooner.</h3>
-      <p>You bring what you’ve saved. Your lender provides the home loan. <strong>BuySooner provides the missing piece.</strong></p>
-    </div>
-  </section>
-
-  <section class="section how-section" id="how">
+  <section class="solution-maths-section" id="how">
     <div class="shell">
-      <p class="section-kicker">How BuySooner changes the maths</p>
-      <h2>Same savings. Same home loan. Bigger buying budget.</h2>
-      <p class="section-lead">You bring what you’ve saved. Your lender provides the home loan. <strong>BuySooner adds the missing piece.</strong></p>
-    </div>
-  </section>
+      <div class="solution-intro">
+        <p class="section-kicker">The solution</p>
+        <h2>BuySooner helps break the cycle.</h2>
+        <h3>More buying power now, so you can buy the home you want sooner.</h3>
+        <p>You bring what you’ve saved. Your lender provides the home loan. <strong>BuySooner provides the missing piece.</strong></p>
+      </div>
 
-  <section class="section maths-section" id="maths">
-    <div class="shell">
-      <p class="section-kicker maths-kicker">The maths</p>
+      <div class="maths-intro">
+        <p class="section-kicker">How BuySooner changes the maths</p>
+        <h2>Same savings. Same home loan. Bigger buying budget.</h2>
+      </div>
 
-      <div class="maths-panel">
+      <div class="maths-panel" id="maths">
+        <p class="section-kicker maths-kicker">The maths</p>
+
         <div class="equation">
           <div class="equation-part buyer"><strong>$100k</strong><span>You’ve saved</span></div>
           <div class="equation-symbol s1">+</div>
@@ -128,7 +130,8 @@
         </div>
 
         <div class="maths-trust">
-          <strong>No monthly BuySooner repayments.</strong>
+          <span><strong>You own the home from settlement.</strong></span>
+          <span><strong>No monthly BuySooner repayments.</strong></span>
           <span>BuySooner is repaid later when you refinance or sell, together with its agreed return.</span>
         </div>
       </div>
