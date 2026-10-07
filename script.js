@@ -26,6 +26,22 @@ const animateNumber=(el,from,to,duration,formatter)=>{
   requestAnimationFrame(frame);
 };
 
+
+const observeOnce=(selector,className,threshold)=>{
+  document.querySelectorAll(selector).forEach(el=>{
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting)return;
+        entry.target.classList.add(className);
+        observer.unobserve(entry.target);
+      });
+    },{threshold});
+    observer.observe(el);
+  });
+};
+
+observeOnce('.problem-flow','is-visible',0.35);
+
 const equation=document.querySelector('.equation');
 const mathsPanel=document.querySelector('.maths-panel');
 const growthStrip=document.querySelector('.growth-strip');
