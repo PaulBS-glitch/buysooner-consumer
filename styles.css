@@ -175,8 +175,8 @@ h2{margin:0;color:var(--navy);letter-spacing:-.035em}
   color:var(--muted);
 }
 .solution-block{
-  margin-top:18px;
-  padding-top:18px;
+  margin-top:24px;
+  padding-top:20px;
   border-top:1px solid var(--line);
 }
 .solution-heading{
@@ -273,17 +273,35 @@ h2{margin:0;color:var(--navy);letter-spacing:-.035em}
 }
 .equation-symbol.active-symbol{color:var(--teal-dark);transform:scale(1.18)}
 
-/* Cost of waiting = large visual proof, side-by-side */
+.maths-trust{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:12px;
+  padding:11px 14px;
+  border:1px solid #cfe7df;
+  border-radius:12px;
+  background:#fff;
+  text-align:center;
+  font-size:10.5px;
+  line-height:1.35;
+  color:var(--muted);
+}
+.maths-trust strong{color:var(--navy)}
+
+
+/* Cost of waiting = urgency proof before the solution */
 .cost-waiting{
   display:grid;
   grid-template-columns:.88fr 1.12fr;
   gap:26px;
   align-items:center;
-  margin-top:22px;
+  margin-top:24px;
   padding:24px;
   border:1px solid #d9e9e5;
   border-radius:20px;
-  background:#fff;
+  background:var(--mint2);
   box-shadow:0 12px 30px rgba(6,45,70,.05);
 }
 .cost-waiting h2{
@@ -583,6 +601,8 @@ h2{margin:0;color:var(--navy);letter-spacing:-.035em}
     column-gap:6px;
   }
 
+  .maths-trust{display:block;padding:10px 11px;font-size:9.5px}
+  .maths-trust strong{display:block;margin-bottom:2px}
   .cost-waiting{padding:18px;gap:16px}
   .cost-waiting h2{font-size:23px}
   .cost-intro{font-size:10px}
