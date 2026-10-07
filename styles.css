@@ -69,19 +69,19 @@ h2{margin:0;color:var(--navy);letter-spacing:-.035em}
   border-bottom:1px solid var(--line);
 }
 .hero-inner{
-  min-height:242px;
+  min-height:220px;
   display:grid;
-  grid-template-columns:1.43fr .57fr;
+  grid-template-columns:1.55fr .45fr;
   align-items:stretch;
 }
 .hero-copy{
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
-  padding:24px 38px 22px 0;
+  padding:18px 34px 18px 0;
 }
 .hero-visual{
-  min-height:222px;
+  min-height:200px;
   background:url("house.png") 59% 56%/cover no-repeat;
   border-radius:0 0 0 24px;
 }
@@ -113,7 +113,7 @@ h2{margin:0;color:var(--navy);letter-spacing:-.035em}
 
 /* PROBLEM */
 .problem-section{
-  padding:38px 0 40px;
+  padding:34px 0 40px;
   background:#fff;
 }
 .problem-line{
@@ -131,224 +131,178 @@ h2{margin:0;color:var(--navy);letter-spacing:-.035em}
   color:#365466;
 }
 
-/* COST OF WAITING: visual experience, not a card inside a card */
-.cost-block{
-  margin-top:30px;
-}
-.waiting-journey{
+/* COST OF WAITING: compact ticker / counter */
+.cost-block{margin-top:26px}
+.waiting-ticker{
   display:grid;
-  grid-template-columns:150px 1fr 150px;
-  grid-template-rows:160px auto;
+  grid-template-columns:1fr 1.2fr 1fr;
   align-items:center;
-  column-gap:20px;
-  margin-top:6px;
-  padding:8px 0 0;
+  gap:20px;
+  min-height:116px;
+  margin-top:5px;
+  padding:18px 22px;
+  border:1px solid #dbe7eb;
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 8px 22px rgba(6,45,70,.035);
 }
-.journey-value{
+.ticker-stat{
   display:flex;
   flex-direction:column;
-  gap:5px;
-  z-index:2;
+  gap:4px;
 }
-.journey-start{align-items:flex-start}
-.journey-end{align-items:flex-end}
-.journey-value span{
+.ticker-start{align-items:flex-start}
+.ticker-end{align-items:flex-end}
+.ticker-stat span{
   font-size:8px;
   font-weight:900;
   letter-spacing:.1em;
   text-transform:uppercase;
-  color:#78909d;
+  color:#7b919d;
 }
-.journey-value strong{
-  font-size:30px;
+.ticker-stat strong{
+  font-size:34px;
   line-height:1;
   color:var(--navy);
 }
-.journey-track{
-  position:relative;
-  height:150px;
-}
-.journey-path{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  overflow:visible;
-}
-.journey-path-base,
-.journey-path-progress{
-  fill:none;
-  stroke-width:4;
-  stroke-linecap:round;
-}
-.journey-path-base{stroke:#d9e7eb}
-.journey-path-progress{
-  stroke:var(--teal);
-  stroke-dasharray:800;
-  stroke-dashoffset:800;
-}
-.waiting-journey.is-animated .journey-path-progress{
-  animation:drawJourney 1.55s ease forwards;
-}
-.moving-house{
-  position:absolute;
-  left:1%;
-  bottom:12%;
-  width:48px;
-  height:48px;
-  transform-origin:center bottom;
-  z-index:3;
-}
-.moving-house .roof{
-  position:absolute;
-  left:7px;
-  top:4px;
-  width:34px;
-  height:34px;
-  border-radius:4px;
-  background:var(--teal);
-  transform:rotate(45deg);
-}
-.moving-house .house-body{
-  position:absolute;
-  left:8px;
-  bottom:2px;
-  width:33px;
-  height:29px;
-  border-radius:3px;
-  background:var(--navy);
-}
-.moving-house .house-door{
-  position:absolute;
-  left:21px;
-  bottom:2px;
-  width:8px;
-  height:16px;
-  border-radius:2px 2px 0 0;
-  background:#fff;
-}
-.waiting-journey.is-animated .moving-house{
-  animation:moveHouse 1.55s cubic-bezier(.2,.7,.25,1) forwards;
-}
-.journey-result{
-  grid-column:1/-1;
+.ticker-delta{
   display:flex;
-  align-items:baseline;
+  align-items:center;
   justify-content:center;
-  gap:10px;
-  margin-top:5px;
+  gap:12px;
+}
+.ticker-arrow{
+  font-size:22px;
+  font-weight:900;
+  color:#9bb0ba;
+  transition:transform .3s ease,color .3s ease;
+}
+.ticker-delta-copy{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-width:150px;
+  padding:11px 18px;
+  border-radius:999px;
+  background:var(--mint);
+}
+.ticker-delta-copy strong{
+  font-size:21px;
+  line-height:1;
+  color:var(--teal-dark);
+}
+.ticker-delta-copy span{
+  margin-top:4px;
+  font-size:9px;
+  font-weight:900;
+  color:#5e7a86;
+}
+.waiting-ticker.is-animated .ticker-arrow{
+  color:var(--teal-dark);
+  transform:translateX(3px);
+}
+.ticker-subbar{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:8px;
+  font-size:9.5px;
   text-align:center;
+  color:#617985;
 }
-.journey-result strong{
-  font-size:18px;
-  color:var(--navy);
-}
-.journey-result span{
+.ticker-subbar strong{color:var(--navy)}
+.ticker-subbar span{
   font-size:8px;
-  font-weight:800;
-  color:#7d929e;
-}
-@keyframes drawJourney{to{stroke-dashoffset:0}}
-@keyframes moveHouse{
-  0%{left:1%;bottom:12%;transform:scale(.72)}
-  25%{left:24%;bottom:20%;transform:scale(.84)}
-  50%{left:48%;bottom:32%;transform:scale(.98)}
-  75%{left:70%;bottom:47%;transform:scale(1.12)}
-  100%{left:88%;bottom:66%;transform:scale(1.28)}
+  color:#81949e;
 }
 
-/* OPTIONS: cards used only because these are parallel choices */
-.options-block{margin-top:30px}
+/* OPTIONS + SOLUTION + MATHS: one continuous visual chapter */
+.options-block{margin-top:24px}
 .choice-grid-three{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:14px;
 }
 .choice-card{
-  min-height:124px;
-  padding:16px 17px 17px;
+  min-height:106px;
+  padding:14px 16px 15px;
   border:1px solid var(--line);
   border-radius:14px;
   background:#fff;
-  box-shadow:0 8px 22px rgba(6,45,70,.04);
+  box-shadow:0 7px 18px rgba(6,45,70,.035);
   transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
 }
 .choice-card.is-active{
   transform:translateY(-3px);
   border-color:var(--teal);
-  box-shadow:0 13px 28px rgba(6,45,70,.09);
+  box-shadow:0 12px 25px rgba(6,45,70,.08);
 }
 .choice-index{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  width:24px;
-  height:24px;
-  margin-bottom:8px;
+  width:22px;
+  height:22px;
+  margin-bottom:6px;
   border-radius:50%;
   background:#f0f5f7;
   color:#68808d;
-  font-size:8px;
+  font-size:7.5px;
   font-weight:900;
 }
 .choice-card h3{
-  margin:0 0 4px;
-  font-size:15px;
+  margin:0 0 3px;
+  font-size:14px;
   color:var(--navy);
 }
 .choice-card strong{
   display:block;
-  margin-bottom:4px;
-  font-size:10.5px;
+  margin-bottom:3px;
+  font-size:10px;
   color:var(--navy);
 }
 .choice-card p{
   margin:0;
-  font-size:9.5px;
-  line-height:1.4;
+  font-size:9px;
+  line-height:1.35;
   color:var(--muted);
 }
 
-/* SOLUTION + MATHS: one continuous chapter */
-.solution-maths-section{
-  padding:42px 0 38px;
-  background:var(--mint2);
-  border-top:1px solid #dcefe9;
-}
 .solution-intro{
-  max-width:900px;
+  margin-top:28px;
+  padding-top:25px;
+  border-top:1px solid #e2ebee;
+  max-width:920px;
 }
 .solution-intro h2{
-  font-size:34px;
-  line-height:1.02;
+  font-size:32px;
+  line-height:1.03;
 }
 .solution-intro h3{
-  margin:8px 0 0;
-  font-size:21px;
+  margin:7px 0 0;
+  font-size:20px;
   line-height:1.15;
   color:var(--teal-dark);
 }
 .solution-intro p{
-  margin:12px 0 0;
+  margin:11px 0 0;
   max-width:780px;
-  font-size:11.5px;
-  line-height:1.48;
+  font-size:11px;
+  line-height:1.45;
   color:#526d7c;
 }
 .solution-intro p strong{color:var(--navy)}
+
 .maths-intro{
-  margin-top:30px;
-  padding-top:26px;
-  border-top:1px solid #dce8e4;
+  margin-top:24px;
 }
 .maths-intro h2{
   font-size:27px;
   line-height:1.05;
 }
-.maths-panel{
-  margin-top:18px;
-}
-.maths-kicker{margin-bottom:8px}
+.maths-panel{margin-top:16px}
+.maths-kicker{margin-bottom:7px}
 .equation{
   display:grid;
   grid-template-columns:1fr 24px 1fr 24px 1fr 24px 1.08fr;
@@ -356,7 +310,7 @@ h2{margin:0;color:var(--navy);letter-spacing:-.035em}
   align-items:center;
 }
 .equation-part{
-  min-height:82px;
+  min-height:78px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -371,7 +325,7 @@ h2{margin:0;color:var(--navy);letter-spacing:-.035em}
   border-color:var(--teal);
 }
 .equation-part strong{
-  font-size:29px;
+  font-size:28px;
   line-height:1;
   color:var(--navy);
 }
@@ -404,23 +358,17 @@ h2{margin:0;color:var(--navy);letter-spacing:-.035em}
 .maths-trust{
   display:flex;
   justify-content:center;
-  gap:0;
-  margin-top:17px;
-  padding-top:13px;
+  margin-top:15px;
+  padding-top:12px;
   border-top:1px solid #dce8e4;
   text-align:center;
-  font-size:9.5px;
+  font-size:11px;
   line-height:1.35;
   color:#637b88;
 }
-.maths-trust span{
-  padding:0 14px;
-}
-.maths-trust span+span{
-  border-left:1px solid #d5e2e6;
-}
+.maths-trust span{padding:0 14px}
+.maths-trust span+span{border-left:1px solid #d5e2e6}
 .maths-trust strong{color:var(--navy)}
-
 /* FINAL CTA: only strong dark visual ending */
 .close-section{
   padding:42px 0;
@@ -487,11 +435,11 @@ h2{margin:0;color:var(--navy);letter-spacing:-.035em}
 @media(max-width:900px){
   .shell{width:min(100% - 30px,1080px)}
   .nav{gap:12px;font-size:10px}
-  .hero-inner{grid-template-columns:1.5fr .5fr}
+  .hero-inner{grid-template-columns:1.62fr .38fr}
   .hero-main{font-size:27px}
   .problem-line{font-size:25px}
-  .waiting-journey{grid-template-columns:125px 1fr 125px}
-  .journey-value strong{font-size:25px}
+  .ticker-stat strong{font-size:29px}
+  .ticker-delta-copy strong{font-size:18px}
 }
 
 @media(max-width:640px){
@@ -516,27 +464,28 @@ h2{margin:0;color:var(--navy);letter-spacing:-.035em}
   .section-kicker{font-size:9px}
   .problem-line{font-size:23px}
   .problem-support{font-size:11.5px}
-  .cost-block{margin-top:24px}
-  .waiting-journey{
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:auto 130px auto;
-    gap:8px 12px;
+  .cost-block{margin-top:22px}
+  .waiting-ticker{
+    grid-template-columns:1fr;
+    gap:10px;
+    min-height:0;
+    padding:15px;
   }
-  .journey-start{grid-column:1}
-  .journey-end{grid-column:2}
-  .journey-track{grid-column:1/-1;grid-row:2;height:130px}
-  .journey-value strong{font-size:22px}
-  .journey-result{grid-column:1/-1;grid-row:3;display:block}
-  .journey-result strong{display:block;font-size:14px}
-  .journey-result span{display:block;margin-top:3px}
+  .ticker-start,.ticker-end{align-items:center}
+  .ticker-delta{gap:8px}
+  .ticker-stat strong{font-size:25px}
+  .ticker-delta-copy{min-width:140px}
+  .ticker-delta-copy strong{font-size:18px}
+  .ticker-subbar{display:block;font-size:9px}
+  .ticker-subbar span{display:block;margin-top:3px}
   .choice-grid-three{grid-template-columns:1fr;gap:8px}
   .choice-card{min-height:0;padding:14px}
 
-  .solution-maths-section{padding:30px 0}
+  .solution-intro{margin-top:24px;padding-top:21px}
   .solution-intro h2{font-size:28px}
   .solution-intro h3{font-size:18px}
   .solution-intro p{font-size:10.8px}
-  .maths-intro{margin-top:24px;padding-top:21px}
+  .maths-intro{margin-top:22px}
   .maths-intro h2{font-size:23px}
   .equation{
     grid-template-columns:1fr 10px 1fr 10px 1fr;
