@@ -8,200 +8,117 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="shell nav-wrap">
-      <a class="brand" href="#top" aria-label="OnHome home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-on">On</span><span class="brand-home">Home</span>
-      </a>
+<header class="site-header">
+  <div class="shell nav-wrap">
+    <a class="brand" href="#top" aria-label="OnHome home"><span class="brand-on">On</span><span class="brand-home">Home</span></a>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">Menu</button>
+    <nav class="nav" aria-label="Primary">
+      <a href="#problem">The problem</a>
+      <a href="#maths">How it works</a>
+      <a href="#close">Why buy sooner</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="button button-small nav-cta" href="#maths">See my buying power</a>
+  </div>
+</header>
 
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">Menu</button>
-
-      <nav class="nav" aria-label="Primary">
-        <a href="#problem">The problem</a>
-        <a href="#maths">How it works</a>
-        <a href="#life">Why buy sooner</a>
-        <a href="#about">About</a>
-      </nav>
-
-      <a class="button button-small nav-cta" href="#maths">See my buying power</a>
+<main id="top">
+  <section class="hero">
+    <div class="hero-photo" aria-hidden="true"></div>
+    <div class="hero-wash" aria-hidden="true"></div>
+    <div class="shell hero-inner">
+      <div class="hero-copy">
+        <p class="hero-kicker">It’s never been harder to achieve the Great Australian Dream.</p>
+        <h1>You don’t need a smaller dream.<span>You need a bigger home-buying budget.</span></h1>
+        <p class="hero-lead"><strong>You keep saving. You make the sacrifices. But the goalposts keep moving and the home you want keeps slipping further out of reach. BuySooner helps close the gap between where you are today and the home you really want.</strong></p>
+        <a class="button hero-cta" href="#maths">See my buying power <span aria-hidden="true">→</span></a>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main id="top">
-    <section class="hero">
-      <div class="shell hero-inner">
-        <div class="hero-copy">
-          <p class="hero-kicker">It’s never been harder to achieve the Great Australian Dream.</p>
+  <section class="story" id="problem">
+    <div class="shell">
+      <div class="eyebrow">The real problem</div>
+      <h2>You save. The market moves.<br>You save again. The market moves again.</h2>
+      <p class="story-intro"><strong>BuySooner helps break the cycle by giving you more buying power now.</strong></p>
 
-          <h1>
-            You don’t need a smaller dream.
-            <span>You need a bigger home-buying budget.</span>
-          </h1>
-
-          <p class="hero-lead">
-            <strong>You keep saving. You make the sacrifices. But the goalposts keep moving and the home you want keeps slipping further out of reach. BuySooner helps close the gap between where you are today and the home you really want.</strong>
-          </p>
-
-          <div class="hero-actions">
-            <a class="button" href="#maths">See my buying power</a>
-            <a class="text-link" href="#maths">How BuySooner works <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
+      <div class="choice-stage" aria-live="polite">
+        <article class="choice-card choice-one is-active">
+          <span class="choice-number">01</span>
+          <div><h3>Keep saving</h3><strong>More sacrifice. More waiting.</strong><p>You cut back. You save harder. And the home you want keeps getting further away.</p></div>
+        </article>
+        <article class="choice-card choice-two">
+          <span class="choice-number">02</span>
+          <div><h3>Borrow more</h3><strong>More debt. More pressure.</strong><p>Stretch the mortgage further and every month gets tighter.</p></div>
+        </article>
+        <article class="choice-card choice-three featured">
+          <span class="choice-number">03</span>
+          <div><h3>BuySooner</h3><strong>More buying power. Right now.</strong><p>Bridge the gap, stop chasing the market and get into the home you really want sooner.</p></div>
+        </article>
       </div>
-    </section>
 
-    <section class="story" id="problem">
-      <div class="shell story-grid">
-        <div class="story-copy">
-          <p class="eyebrow">The real problem</p>
-          <h2>You save. The market moves.<br>You save again. The market moves again.</h2>
-          <p class="section-intro"><strong>BuySooner helps break the cycle by giving you more buying power now.</strong></p>
+      <div class="change-block">
+        <div class="eyebrow">How BuySooner changes it</div>
+        <h3>Same savings. Same home loan. Bigger buying budget.</h3>
+        <p>You bring what you’ve saved. Your lender provides the home loan. <strong>BuySooner adds the missing piece.</strong></p>
+      </div>
 
-          <div class="maths-intro" id="maths">
-            <p class="eyebrow">How BuySooner changes the maths</p>
-            <h3>Same savings. Same home loan.<br>Bigger buying budget.</h3>
-            <p>You bring what you’ve saved. Your lender provides the home loan. <strong>BuySooner adds the missing piece.</strong></p>
-          </div>
-        </div>
-
-        <div class="story-stage">
-          <div class="choice-stage" aria-live="polite">
-            <article class="choice-card choice-one is-active">
-              <span class="choice-number">01</span>
-              <div>
-                <h3>Keep saving</h3>
-                <strong>More sacrifice. More waiting.</strong>
-                <p>You cut back. You save harder. And the home you want keeps getting further away.</p>
-              </div>
-            </article>
-
-            <article class="choice-card choice-two">
-              <span class="choice-number">02</span>
-              <div>
-                <h3>Borrow more</h3>
-                <strong>More debt. More pressure.</strong>
-                <p>Stretch the mortgage further and every month gets tighter.</p>
-              </div>
-            </article>
-
-            <article class="choice-card choice-three featured">
-              <span class="choice-number">03</span>
-              <div>
-                <h3>BuySooner</h3>
-                <strong>More buying power. Right now.</strong>
-                <p>Bridge the gap, stop chasing the market and get into the home you really want sooner.</p>
-              </div>
-            </article>
+      <div class="maths-block" id="maths">
+        <div class="eyebrow">The maths</div>
+        <div class="maths-panel">
+          <div class="equation" aria-label="$100,000 saved plus $800,000 home loan plus $100,000 BuySooner Boost equals a $1,000,000 home">
+            <div class="equation-part buyer"><strong>$100k</strong><span>You’ve saved</span></div>
+            <div class="equation-symbol s1">+</div>
+            <div class="equation-part loan"><strong>$800k</strong><span>Home loan</span></div>
+            <div class="equation-symbol s2">+</div>
+            <div class="equation-part boost"><strong>$100k</strong><span>BuySooner</span></div>
+            <div class="equation-symbol eq">=</div>
+            <div class="equation-part home"><strong>$1m</strong><span>home</span></div>
           </div>
 
-          <div class="maths-panel">
-            <div class="equation" aria-label="$100,000 saved plus $800,000 home loan plus $100,000 BuySooner Boost equals a $1,000,000 home">
-              <div class="equation-part equation-buyer">
-                <strong>$100k</strong>
-                <span>You’ve saved</span>
-              </div>
-              <div class="equation-symbol symbol-one">+</div>
-              <div class="equation-part equation-loan">
-                <strong>$800k</strong>
-                <span>Home loan</span>
-              </div>
-              <div class="equation-symbol symbol-two">+</div>
-              <div class="equation-part equation-boost">
-                <strong>$100k</strong>
-                <span>BuySooner</span>
-              </div>
-              <div class="equation-symbol symbol-equals">=</div>
-              <div class="equation-part equation-home">
-                <strong>$1m</strong>
-                <span>home</span>
-              </div>
+          <p class="maths-payoff"><strong>That extra buying power can be the difference between compromising on the home you want — and actually buying it.</strong></p>
+
+          <div class="growth-strip">
+            <div class="growth-end"><strong>$1.00m</strong><span>Today</span></div>
+            <div class="growth-line-wrap">
+              <div class="growth-line"><span class="growth-progress"></span><span class="growth-dot"></span></div>
+              <span class="growth-rate">5.5% p.a. illustrative growth</span>
             </div>
-
-            <p class="maths-payoff"><strong>That extra buying power can be the difference between compromising on the home you want — and actually buying it.</strong></p>
-
-            <div class="growth-strip" aria-label="Illustrative five year growth scenario" data-start="1000000" data-rate="0.055" data-years="5">
-              <div class="growth-end">
-                <strong>$1.00m</strong>
-                <span>Today</span>
-              </div>
-
-              <div class="growth-line-wrap">
-                <div class="growth-line">
-                  <span class="growth-progress"></span>
-                  <span class="growth-dot"></span>
-                </div>
-                <span class="growth-rate">5.5% p.a. illustrative growth</span>
-              </div>
-
-              <div class="growth-end growth-finish">
-                <strong class="growth-value">$1.31m</strong>
-                <span>Year 5</span>
-              </div>
-            </div>
-
-            <div class="reassurance-row">
-              <div>
-                <span class="tick">✓</span>
-                <span><strong>Your home</strong><small>You buy it. You live in it. You make it yours.</small></span>
-              </div>
-              <div>
-                <span class="tick">✓</span>
-                <span><strong>No monthly BuySooner payment</strong><small>More buying power without adding another monthly Boost repayment.</small></span>
-              </div>
-              <div>
-                <span class="tick">✓</span>
-                <span><strong>Temporary Boost</strong><small>BuySooner is designed to help you buy sooner and move on from the Boost later.</small></span>
-              </div>
-            </div>
-
-            <a class="text-cta" href="#life">See my buying power <span aria-hidden="true">→</span></a>
+            <div class="growth-end"><strong class="growth-value">$1.31m</strong><span>Year 5</span></div>
           </div>
+
+          <div class="reassurance-row">
+            <div class="reassurance-box"><strong>Your home</strong><span>You buy it. You live in it. You make it yours.</span></div>
+            <div class="reassurance-box"><strong>No monthly BuySooner payment</strong><span>More buying power without adding another monthly Boost repayment.</span></div>
+            <div class="reassurance-box"><strong>Temporary Boost</strong><span>BuySooner is designed to help you buy sooner and move on from the Boost later.</span></div>
+          </div>
+
+          <a class="text-cta" href="#close">See my buying power <span aria-hidden="true">→</span></a>
         </div>
       </div>
-    </section>
-
-    <section class="credibility" id="about">
-      <div class="shell credibility-inner">
-        <div>
-          <span class="credibility-label">Built for Australian home buyers</span>
-          <strong>BuySooner is designed around the way Australians buy, finance and refinance their homes.</strong>
-        </div>
-        <a class="text-link" href="#top">About OnHome <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
-    <section class="life" id="life">
-      <div class="shell life-grid">
-        <div>
-          <p class="eyebrow">Buy sooner. Live sooner.</p>
-          <h2>Stop waiting for the home that fits your life.</h2>
-        </div>
-
-        <div class="life-copy">
-          <p>More room. A better location. A backyard. A place closer to family, schools or work.</p>
-          <p><strong>BuySooner isn’t about buying more for the sake of it. It’s about bringing the home you really want within reach sooner.</strong></p>
-        </div>
-
-        <div class="life-action">
-          <h3>See what a bigger buying budget could put within reach.</h3>
-          <a class="button button-teal life-button" href="#maths">See my buying power <span aria-hidden="true">→</span></a>
-          <a class="text-link life-link" href="#maths">How BuySooner works <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="shell footer-row">
-      <a class="brand footer-brand" href="#top" aria-label="OnHome home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-on">On</span><span class="brand-home">Home</span>
-      </a>
-      <p class="disclaimer">Illustrative example only. Eligibility and BuySooner Boost amounts vary.</p>
     </div>
-  </footer>
+  </section>
 
-  <script src="script.js"></script>
+  <section class="credibility" id="about">
+    <div class="shell credibility-inner">
+      <span class="credibility-label">Built for Australian home buyers</span>
+      <strong>BuySooner is designed around the way Australians buy, finance and refinance their homes.</strong>
+      <a class="text-link" href="#top">About OnHome <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="close" id="close">
+    <div class="shell close-grid">
+      <div><div class="eyebrow">Buy sooner. Live sooner.</div><h2>Stop waiting for the home that fits your life.</h2></div>
+      <div class="close-copy"><p>More room. A better location. A backyard. A place closer to family, schools or work.</p><p><strong>BuySooner isn’t about buying more for the sake of it. It’s about bringing the home you really want within reach sooner.</strong></p></div>
+      <div class="close-action"><h3>See what a bigger buying budget could put within reach.</h3><a class="button close-cta" href="#maths">See my buying power <span aria-hidden="true">→</span></a><a class="small-link" href="#maths">How BuySooner works →</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="shell footer-row"><a class="brand footer-brand" href="#top"><span class="brand-on">On</span><span class="brand-home">Home</span></a><p>Illustrative example only. Eligibility and BuySooner Boost amounts vary.</p></div>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
