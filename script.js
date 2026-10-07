@@ -5,10 +5,12 @@ if(menuToggle&&nav){
   menuToggle.addEventListener('click',()=>{
     const open=menuToggle.getAttribute('aria-expanded')==='true';
     menuToggle.setAttribute('aria-expanded',String(!open));
+
     if(open){
       nav.removeAttribute('style');
       return;
     }
+
     Object.assign(nav.style,{
       display:'flex',
       position:'absolute',
@@ -38,7 +40,7 @@ const observeOnce=(selector,className,threshold)=>{
   });
 };
 
-observeOnce('.problem','is-visible',0.18);
+observeOnce('.problem-flow','is-visible',0.18);
 observeOnce('.equation','is-active',0.45);
 
 const growthStrip=document.querySelector('.growth-strip');
@@ -46,6 +48,7 @@ if(growthStrip){
   const observer=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       if(!entry.isIntersecting)return;
+
       growthStrip.classList.add('is-active');
 
       const start=Number(growthStrip.dataset.start||1000000);
@@ -53,7 +56,7 @@ if(growthStrip){
       const years=Number(growthStrip.dataset.years||5);
       const finish=start*Math.pow(1+rate,years);
       const valueEl=growthStrip.querySelector('.growth-value');
-      const duration=1650;
+      const duration=1450;
       const startTime=performance.now();
 
       const frame=now=>{
@@ -67,6 +70,7 @@ if(growthStrip){
       requestAnimationFrame(frame);
       observer.unobserve(growthStrip);
     });
-  },{threshold:.55});
+  },{threshold:.5});
+
   observer.observe(growthStrip);
 }
