@@ -34,18 +34,16 @@ const animateNumber=(el,from,to,duration,formatter)=>{
     const p=Math.min((now-started)/duration,1);
     const eased=1-Math.pow(1-p,3);
     el.textContent=formatter(from+(to-from)*eased);
-
     if(p<1) requestAnimationFrame(frame);
   };
 
   requestAnimationFrame(frame);
 };
 
-/* Cost of waiting: the house and price grow together. */
-const costWaiting=document.querySelector('.cost-waiting');
-const costVisual=document.querySelector('.cost-visual');
+/* Cost of waiting: draw the rising path while the house grows and price counts. */
+const waitingJourney=document.querySelector('.waiting-journey');
 
-if(costWaiting&&costVisual){
+if(waitingJourney){
   let ran=false;
 
   const observer=new IntersectionObserver(entries=>{
@@ -53,18 +51,18 @@ if(costWaiting&&costVisual){
       if(!entry.isIntersecting||ran) return;
       ran=true;
 
-      const growthValue=costVisual.querySelector('.growth-value');
+      const growthValue=waitingJourney.querySelector('.growth-value');
       const start=1000000;
       const finish=start*Math.pow(1.06,5);
 
       growthValue.textContent='$1.00m';
-      costVisual.classList.add('is-animated');
+      waitingJourney.classList.add('is-animated');
 
       animateNumber(
         growthValue,
         start,
         finish,
-        1350,
+        1550,
         v=>'$'+(v/1000000).toFixed(2)+'m'
       );
 
@@ -72,10 +70,10 @@ if(costWaiting&&costVisual){
     });
   },{threshold:.4});
 
-  observer.observe(costWaiting);
+  observer.observe(waitingJourney);
 }
 
-/* Existing options: emphasis moves across the three conventional choices. */
+/* Conventional choices: subtle guided emphasis, all content stays readable. */
 const optionsBlock=document.querySelector('.options-block');
 const choices=[...document.querySelectorAll('.choice-card')];
 
@@ -104,7 +102,7 @@ if(optionsBlock&&choices.length===3){
 }
 
 /* Maths: sequentially build the purchase equation. */
-const maths=document.querySelector('.maths-section');
+const maths=document.querySelector('.maths-panel');
 const equation=document.querySelector('.equation');
 
 if(maths&&equation){
@@ -168,7 +166,6 @@ if(maths&&equation){
       },1650);
 
       setTimeout(clearSteps,2250);
-
       observer.unobserve(entry.target);
     });
   },{threshold:.35});
