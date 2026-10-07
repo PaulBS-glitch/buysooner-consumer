@@ -41,43 +41,11 @@ const animateNumber=(el,from,to,duration,formatter)=>{
   requestAnimationFrame(frame);
 };
 
-/* Problem choices: emphasis only. All content remains readable. */
-const choicesBlock=document.querySelector('.conventional-block');
-const keepCard=document.querySelector('.choice-one');
-const borrowCard=document.querySelector('.choice-two');
-
-if(choicesBlock&&keepCard&&borrowCard){
-  let ran=false;
-
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(!entry.isIntersecting||ran) return;
-      ran=true;
-
-      keepCard.classList.add('is-active');
-      borrowCard.classList.remove('is-active');
-
-      setTimeout(()=>{
-        keepCard.classList.remove('is-active');
-        borrowCard.classList.add('is-active');
-      },900);
-
-      setTimeout(()=>{
-        borrowCard.classList.remove('is-active');
-      },1800);
-
-      observer.unobserve(entry.target);
-    });
-  },{threshold:.35});
-
-  observer.observe(choicesBlock);
-}
-
-/* Cost of waiting: animate the five-year move when the proof enters view. */
+/* Cost of waiting: the house and price grow together. */
 const costWaiting=document.querySelector('.cost-waiting');
-const growth=document.querySelector('.growth-strip');
+const costVisual=document.querySelector('.cost-visual');
 
-if(costWaiting&&growth){
+if(costWaiting&&costVisual){
   let ran=false;
 
   const observer=new IntersectionObserver(entries=>{
@@ -85,18 +53,18 @@ if(costWaiting&&growth){
       if(!entry.isIntersecting||ran) return;
       ran=true;
 
-      const growthValue=growth.querySelector('.growth-value');
+      const growthValue=costVisual.querySelector('.growth-value');
       const start=1000000;
       const finish=start*Math.pow(1.06,5);
 
       growthValue.textContent='$1.00m';
-      growth.classList.add('is-animated');
+      costVisual.classList.add('is-animated');
 
       animateNumber(
         growthValue,
         start,
         finish,
-        1250,
+        1350,
         v=>'$'+(v/1000000).toFixed(2)+'m'
       );
 
@@ -107,12 +75,11 @@ if(costWaiting&&growth){
   observer.observe(costWaiting);
 }
 
-/* BuySooner solution: arrives after the cost-of-waiting proof. */
-const solutionBlock=document.querySelector('.solution-block');
-const solutionHeading=document.querySelector('.solution-heading');
-const solutionCard=document.querySelector('.solution-card');
+/* Existing options: emphasis moves across the three conventional choices. */
+const optionsBlock=document.querySelector('.options-block');
+const choices=[...document.querySelectorAll('.choice-card')];
 
-if(solutionBlock&&solutionHeading&&solutionCard){
+if(optionsBlock&&choices.length===3){
   let ran=false;
 
   const observer=new IntersectionObserver(entries=>{
@@ -120,17 +87,20 @@ if(solutionBlock&&solutionHeading&&solutionCard){
       if(!entry.isIntersecting||ran) return;
       ran=true;
 
-      solutionHeading.classList.add('is-active');
+      const active=index=>{
+        choices.forEach((card,i)=>card.classList.toggle('is-active',i===index));
+      };
 
-      setTimeout(()=>{
-        solutionCard.classList.add('is-active');
-      },450);
+      active(0);
+      setTimeout(()=>active(1),850);
+      setTimeout(()=>active(2),1700);
+      setTimeout(()=>choices.forEach(card=>card.classList.remove('is-active')),2550);
 
       observer.unobserve(entry.target);
     });
-  },{threshold:.4});
+  },{threshold:.3});
 
-  observer.observe(solutionBlock);
+  observer.observe(optionsBlock);
 }
 
 /* Maths: sequentially build the purchase equation. */
