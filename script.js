@@ -41,10 +41,10 @@ const animateNumber=(el,from,to,duration,formatter)=>{
   requestAnimationFrame(frame);
 };
 
-/* Cost of waiting: one visible animation, triggered only when the visual is well in view. */
-const costVisual=document.querySelector('.cost-visual');
+/* Cost of waiting: one SVG, one clear animation. */
+const costChart=document.querySelector('.cost-chart');
 
-if(costVisual){
+if(costChart){
   let ran=false;
 
   const observer=new IntersectionObserver(entries=>{
@@ -52,23 +52,22 @@ if(costVisual){
       if(!entry.isIntersecting||ran) continue;
       ran=true;
 
-      const movingPrice=costVisual.querySelector('.moving-price');
-      const values=['$1.00m','$1.06m','$1.12m','$1.19m','$1.26m','$1.34m'];
+      const endValue=costChart.querySelector('.cost-chart__end-value');
+      costChart.classList.add('is-animated');
 
-      costVisual.classList.add('is-animated');
-      movingPrice.textContent=values[0];
-
-      values.slice(1).forEach((value,index)=>{
-        setTimeout(()=>{
-          movingPrice.textContent=value;
-        },560*(index+1));
-      });
+      animateNumber(
+        endValue,
+        1.00,
+        1.338,
+        1800,
+        v=>'$'+v.toFixed(2)+'m'
+      );
 
       observer.unobserve(entry.target);
     }
-  },{threshold:.62,rootMargin:'0px 0px -8% 0px'});
+  },{threshold:.55,rootMargin:'0px 0px -6% 0px'});
 
-  observer.observe(costVisual);
+  observer.observe(costChart);
 }
 
 /* Three conventional choices: subtle emphasis, never hidden. */
