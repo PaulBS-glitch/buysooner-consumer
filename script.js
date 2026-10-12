@@ -28,88 +28,87 @@ if(menuToggle&&nav){
 }
 
 const animateNumber=(el,from,to,duration,formatter)=>{
-  const started=performance.now();
+  const start=performance.now();
 
   const frame=now=>{
-    const p=Math.min((now-started)/duration,1);
-    const eased=1-Math.pow(1-p,3);
+    const progress=Math.min((now-start)/duration,1);
+    const eased=1-Math.pow(1-progress,3);
     el.textContent=formatter(from+(to-from)*eased);
-    if(p<1) requestAnimationFrame(frame);
+
+    if(progress<1) requestAnimationFrame(frame);
   };
 
   requestAnimationFrame(frame);
 };
 
-/* Cost of waiting: draw the rising path while the house grows and price counts. */
-const waitingJourney=document.querySelector('.waiting-journey');
+/* Cost of waiting: one visible animation, triggered only when the visual is well in view. */
+const costVisual=document.querySelector('.cost-visual');
 
-if(waitingJourney){
+if(costVisual){
   let ran=false;
 
   const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(!entry.isIntersecting||ran) return;
+    for(const entry of entries){
+      if(!entry.isIntersecting||ran) continue;
       ran=true;
 
-      const growthValue=waitingJourney.querySelector('.growth-value');
-      const movingPrice=waitingJourney.querySelector('.moving-price');
+      const movingPrice=costVisual.querySelector('.moving-price');
       const values=['$1.00m','$1.06m','$1.12m','$1.19m','$1.26m','$1.34m'];
 
-      waitingJourney.classList.add('is-animated');
+      costVisual.classList.add('is-animated');
       movingPrice.textContent=values[0];
 
       values.slice(1).forEach((value,index)=>{
         setTimeout(()=>{
           movingPrice.textContent=value;
-          if(index===values.length-2) growthValue.textContent=value;
-        },520*(index+1));
+        },560*(index+1));
       });
 
       observer.unobserve(entry.target);
-    });
-  },{threshold:.58,rootMargin:"0px 0px -8% 0px"});
+    }
+  },{threshold:.62,rootMargin:'0px 0px -8% 0px'});
 
-  observer.observe(waitingJourney);
+  observer.observe(costVisual);
 }
 
-/* Conventional choices: subtle guided emphasis, all content stays readable. */
-const optionsBlock=document.querySelector('.options-block');
-const choices=[...document.querySelectorAll('.choice-card')];
+/* Three conventional choices: subtle emphasis, never hidden. */
+const options=document.querySelector('.options');
+const optionCards=[...document.querySelectorAll('.option-card')];
 
-if(optionsBlock&&choices.length===3){
+if(options&&optionCards.length===3){
   let ran=false;
 
   const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(!entry.isIntersecting||ran) return;
+    for(const entry of entries){
+      if(!entry.isIntersecting||ran) continue;
       ran=true;
 
-      const active=index=>{
-        choices.forEach((card,i)=>card.classList.toggle('is-active',i===index));
+      const activate=index=>{
+        optionCards.forEach((card,i)=>card.classList.toggle('is-active',i===index));
       };
 
-      active(0);
-      setTimeout(()=>active(1),850);
-      setTimeout(()=>active(2),1700);
-      setTimeout(()=>choices.forEach(card=>card.classList.remove('is-active')),2550);
+      activate(0);
+      setTimeout(()=>activate(1),900);
+      setTimeout(()=>activate(2),1800);
+      setTimeout(()=>optionCards.forEach(card=>card.classList.remove('is-active')),2700);
 
       observer.unobserve(entry.target);
-    });
-  },{threshold:.3});
+    }
+  },{threshold:.45});
 
-  observer.observe(optionsBlock);
+  observer.observe(options);
 }
 
-/* Maths: sequentially build the purchase equation. */
-const maths=document.querySelector('.maths-panel');
+/* Maths: build the purchase equation deliberately and leave every completed value visible. */
+const maths=document.querySelector('.maths-block');
 const equation=document.querySelector('.equation');
 
 if(maths&&equation){
   let ran=false;
 
   const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(!entry.isIntersecting||ran) return;
+    for(const entry of entries){
+      if(!entry.isIntersecting||ran) continue;
       ran=true;
 
       const buyer=equation.querySelector('.buyer');
@@ -129,7 +128,7 @@ if(maths&&equation){
       const parts=[buyer,loan,boost,home];
       const symbols=[s1,s2,eq];
 
-      const clearSteps=()=>{
+      const clear=()=>{
         parts.forEach(part=>part.classList.remove('active-step'));
         symbols.forEach(symbol=>symbol.classList.remove('active-symbol'));
       };
@@ -139,59 +138,35 @@ if(maths&&equation){
       boostValue.textContent='$0k';
       homeValue.textContent='$0m';
 
-      clearSteps();
+      clear();
       buyer.classList.add('active-step');
-      animateNumber(buyerValue,0,100,550,v=>'
-      observer.unobserve(entry.target);
-    });
-  },{threshold:.35});
-
-  observer.observe(maths);
-}+Math.round(v)+'k');
+      animateNumber(buyerValue,0,100,650,v=>'$'+Math.round(v)+'k');
 
       setTimeout(()=>{
-        clearSteps();
+        clear();
         s1.classList.add('active-symbol');
         loan.classList.add('active-step');
-        animateNumber(loanValue,0,800,750,v=>'
-      observer.unobserve(entry.target);
-    });
-  },{threshold:.35});
-
-  observer.observe(maths);
-}+Math.round(v)+'k');
-      },700);
+        animateNumber(loanValue,0,800,850,v=>'$'+Math.round(v)+'k');
+      },800);
 
       setTimeout(()=>{
-        clearSteps();
+        clear();
         s2.classList.add('active-symbol');
         boost.classList.add('active-step');
-        animateNumber(boostValue,0,100,550,v=>'
-      observer.unobserve(entry.target);
-    });
-  },{threshold:.35});
-
-  observer.observe(maths);
-}+Math.round(v)+'k');
-      },1600);
+        animateNumber(boostValue,0,100,650,v=>'$'+Math.round(v)+'k');
+      },1800);
 
       setTimeout(()=>{
-        clearSteps();
+        clear();
         eq.classList.add('active-symbol');
         home.classList.add('active-step');
-        animateNumber(homeValue,0,1,650,v=>'
-      observer.unobserve(entry.target);
-    });
-  },{threshold:.35});
+        animateNumber(homeValue,0,1,750,v=>'$'+v.toFixed(2).replace(/\.00$/,'')+'m');
+      },2700);
 
-  observer.observe(maths);
-}+v.toFixed(2).replace(/\.00$/,'')+'m');
-      },2300);
-
-      setTimeout(clearSteps,3150);
+      setTimeout(clear,3600);
       observer.unobserve(entry.target);
-    });
-  },{threshold:.35});
+    }
+  },{threshold:.55});
 
   observer.observe(maths);
 }
