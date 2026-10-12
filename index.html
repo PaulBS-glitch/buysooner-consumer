@@ -33,6 +33,7 @@
     </div>
   </section>
 
+  <!-- START PROBLEM-COST-OPTIONS -->
   <section class="problem-section" id="problem">
     <div class="shell">
       <div class="section-heading">
@@ -41,58 +42,74 @@
         <p class="support">The home doesn’t stand still while you save and while you wait your dream home just keeps getting more expensive.</p>
       </div>
 
-      <div class="cost-wrap">
-        <div class="cost-copy">
+      <div class="cost-waiting">
+        <div class="cost-waiting__copy">
           <p class="eyebrow">The cost of waiting</p>
-          <h3>The same home can keep moving further away.</h3>
-          <p class="cost-result"><strong>+$338,000</strong> for the same home</p>
-          <span>Illustrative 6% p.a. growth over five years.</span>
+          <span class="cost-waiting__label">Extra cost in 5 years</span>
+          <strong class="cost-waiting__big">+$338,000</strong>
+          <span class="cost-waiting__for">for the same home</span>
+          <p class="cost-waiting__note">Illustrative 6% p.a. growth over five years.</p>
         </div>
 
-        <div class="cost-visual" aria-label="Illustrative home value increasing from one million dollars today to 1.34 million dollars in five years">
-          <div class="cost-stat cost-stat-start">
-            <span>Today</span>
-            <strong>$1.00m</strong>
-          </div>
+        <div class="cost-waiting__chart-wrap">
+          <svg class="cost-chart" viewBox="0 0 760 220" role="img" aria-label="Illustrative home value growth from one million dollars today to 1.34 million dollars in five years">
+            <defs>
+              <linearGradient id="growthFill" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#13b89a" stop-opacity=".20"/>
+                <stop offset="100%" stop-color="#13b89a" stop-opacity=".03"/>
+              </linearGradient>
+            </defs>
 
-          <div class="cost-track">
-            <svg class="cost-path" viewBox="0 0 640 96" preserveAspectRatio="none" aria-hidden="true">
-              <path class="path-base" d="M8 78 C150 78 265 68 365 52 C472 35 548 18 632 8"></path>
-              <path class="path-progress" d="M8 78 C150 78 265 68 365 52 C472 35 548 18 632 8"></path>
-            </svg>
-            <div class="moving-price">$1.00m</div>
-            <div class="moving-house" aria-hidden="true">
-              <span class="roof"></span>
-              <span class="house-body"></span>
-              <span class="house-door"></span>
-            </div>
-          </div>
+            <g class="cost-chart__grid" aria-hidden="true">
+              <line x1="92" y1="164" x2="690" y2="164"/>
+              <line x1="92" y1="132" x2="690" y2="132"/>
+              <line x1="92" y1="100" x2="690" y2="100"/>
+              <line x1="92" y1="68" x2="690" y2="68"/>
+            </g>
 
-          <div class="cost-stat cost-stat-end">
-            <span>In 5 years</span>
-            <strong>$1.34m</strong>
-          </div>
+            <line class="cost-chart__baseline" x1="92" y1="164" x2="690" y2="164"/>
+            <path class="cost-chart__area" d="M92 164 L212 148 L332 131 L452 112 L572 91 L690 67 L690 164 Z"/>
+            <path class="cost-chart__line" d="M92 164 L212 148 L332 131 L452 112 L572 91 L690 67"/>
+
+            <g class="cost-chart__house" aria-hidden="true" transform="translate(76 140)">
+              <path d="M16 0 L32 14 L29 17 L16 6 L3 17 L0 14 Z" fill="#13b89a"/>
+              <rect x="5" y="14" width="22" height="19" rx="2" fill="#062d46"/>
+              <rect x="14" y="21" width="6" height="12" rx="1" fill="#ffffff"/>
+            </g>
+
+            <circle class="cost-chart__end-dot" cx="690" cy="67" r="5"/>
+
+            <text class="cost-chart__axis-label" x="92" y="188" text-anchor="middle">TODAY</text>
+            <text class="cost-chart__axis-label" x="690" y="188" text-anchor="middle">YEAR 5</text>
+            <text class="cost-chart__start-value" x="92" y="207" text-anchor="middle">$1.00m</text>
+            <text class="cost-chart__end-value" x="690" y="48" text-anchor="middle">$1.34m</text>
+
+            <g class="cost-chart__delta">
+              <rect x="488" y="76" width="94" height="28" rx="14"/>
+              <text x="535" y="95" text-anchor="middle">+$338k</text>
+            </g>
+          </svg>
         </div>
       </div>
 
       <div class="options">
         <p class="eyebrow">What can you do?</p>
         <div class="option-grid">
-          <article class="option-card option-save">
+          <article class="option-card">
             <span class="option-no">01</span>
             <h3>Keep saving</h3>
             <strong>More sacrifice. More waiting.</strong>
             <p>You cut back. You save harder. And the home you want keeps getting further away.</p>
           </article>
 
-          <article class="option-card option-borrow">
+          <article class="option-card">
             <span class="option-no">02</span>
             <h3>Borrow more</h3>
             <strong>More debt. More pressure.</strong>
             <p>Stretch the mortgage further and every month gets tighter.</p>
           </article>
 
-          <article class="option-card option-family">
+          <article class="option-card">
             <span class="option-no">03</span>
             <h3>Ask family for help</h3>
             <strong>Not everyone has that option.</strong>
@@ -102,66 +119,65 @@
       </div>
     </div>
   </section>
+  <!-- END PROBLEM-COST-OPTIONS -->
 
+  <!-- START SOLUTION-MATHS -->
   <section class="solution-section" id="how">
-    <div class="shell solution-grid">
-      <div class="solution-image">
-        <img src="hero-couple.svg" alt="Home buyers looking toward a house">
-      </div>
-
-      <div class="solution-content">
+    <div class="shell">
+      <div class="solution-head">
         <p class="eyebrow">There is another way</p>
         <h2>BuySooner helps break the cycle.</h2>
         <h3>More buying power now, so you can buy the home you want sooner.</h3>
         <p>You bring what you’ve saved. Your lender provides the home loan. <strong>BuySooner provides the missing piece.</strong></p>
+      </div>
 
-        <div class="maths-block" id="maths">
-          <p class="eyebrow">How BuySooner changes the maths</p>
-          <h4>Same savings. Same home loan. Bigger buying budget.</h4>
+      <div class="maths-block" id="maths">
+        <p class="eyebrow">How BuySooner changes the maths</p>
+        <h4>Same savings. Same home loan. Bigger buying budget.</h4>
 
-          <div class="equation">
-            <div class="equation-part buyer">
-              <strong>$100k</strong>
-              <span>You’ve saved</span>
-            </div>
-            <div class="equation-symbol s1">+</div>
-            <div class="equation-part loan">
-              <strong>$800k</strong>
-              <span>Home loan</span>
-            </div>
-            <div class="equation-symbol s2">+</div>
-            <div class="equation-part boost">
-              <strong>$100k</strong>
-              <span>BuySooner</span>
-            </div>
-            <div class="equation-symbol eq">=</div>
-            <div class="equation-part home">
-              <strong>$1m</strong>
-              <span>home</span>
-            </div>
+        <div class="equation">
+          <div class="equation-part buyer">
+            <strong>$100k</strong>
+            <span>You’ve saved</span>
+          </div>
+          <div class="equation-symbol s1">+</div>
+          <div class="equation-part loan">
+            <strong>$800k</strong>
+            <span>Home loan</span>
+          </div>
+          <div class="equation-symbol s2">+</div>
+          <div class="equation-part boost">
+            <strong>$100k</strong>
+            <span>BuySooner</span>
+          </div>
+          <div class="equation-symbol eq">=</div>
+          <div class="equation-part home">
+            <strong>$1m</strong>
+            <span>home</span>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="shell trust-row">
-      <div class="trust-item">
-        <span>01</span>
-        <strong>You own the home</strong>
-        <p>Your name is on the title from settlement.</p>
-      </div>
-      <div class="trust-item">
-        <span>02</span>
-        <strong>No monthly BuySooner repayments</strong>
-        <p>You continue making your normal home-loan repayments.</p>
-      </div>
-      <div class="trust-item">
-        <span>03</span>
-        <strong>BuySooner is repaid later</strong>
-        <p>When you refinance or sell, together with its agreed return.</p>
+      <div class="trust-row">
+        <div class="trust-item">
+          <span>01</span>
+          <strong>You own the home</strong>
+          <p>Your name is on the title from settlement.</p>
+        </div>
+        <div class="trust-item">
+          <span>02</span>
+          <strong>No monthly BuySooner repayments</strong>
+          <p>You continue making your normal home-loan repayments.</p>
+        </div>
+        <div class="trust-item">
+          <span>03</span>
+          <strong>BuySooner is repaid later</strong>
+          <p>When you refinance or sell, together with its agreed return.</p>
+        </div>
       </div>
     </div>
   </section>
+  <!-- END SOLUTION-MATHS -->
 
   <section class="close-section" id="close">
     <div class="shell close-grid">
